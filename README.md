@@ -159,17 +159,19 @@ Queries:
 
 The administrator is also able to execute multiple queries directly from his homepage by pressing the relevant buttons:
 
-4.1.1. 	View a list with the total number of loans per school (Search criteria: year, calendar month, e.g. January)
+3.1.1. 	View a list with the total number of loans per school (Search criteria: year, calendar month, e.g. January)
 
-4.1.2. For a given book category (user-selected), show which authors belong to it and which teachers have borrowed books from that category in the last year.
+3.1.2. For a given book category (user-selected), show which authors belong to it and which teachers have borrowed books from that category in the last year.
 
-4.1.3. Find young teachers (age < 40 years) who have borrowed the most books and the number of books. 
+3.1.3. Find young teachers (age < 40 years) who have borrowed the most books and the number of books. 
 
-4.1.4. Find authors whose books have not been borrowed. 
+3.1.4. Find authors whose books have not been borrowed. 
 
-4.1.5. Find which operators have loaned the same number of books in a year with more than 20 loans.
+3.1.5. Find which operators have loaned the same number of books in a year with more than 20 loans.
 
-4.1.6. Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings. 4.1.7. Find all authors who have written at least 5 books less than the author with the most books.
+3.1.6. Many books cover more than one category. Among field pairs (e.g., history and poetry) that are common in books, find the top-3 pairs that appeared in borrowings. 
+
+3.1.7. Find all authors who have written at least 5 books less than the author with the most books.
 
 
 Profile:
@@ -208,7 +210,7 @@ Reviews
 
 •	Approve or reject any pending reviews made from students. It is important to note that teachers’ reviews are directly submitted, whereas students’ reviews need to be approved first.
 
-•	4.2.3. View the average Ratings per borrower and category (Search criteria: user/category)
+•	3.2.3. View the average Ratings per borrower and category (Search criteria: user/category)
 
 
 Reservations
@@ -224,7 +226,7 @@ Loans
 
 •	View a record of all the delayed returns (as well as the ones that have already been returned).
 
-•	4.2.2. Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
+•	3.2.2. Find all borrowers who own at least one book and have delayed its return. (Search criteria: First Name, Last Name, Delay Days).
 
 Profile
 
@@ -262,7 +264,7 @@ Reservations
 
 Loans
 
-•	4.3.2. List of all books borrowed by this user: information about all the loans the user has made and their status, where the active ones are displayed on top with their respective due dates.
+•	3.3.2. List of all books borrowed by this user: information about all the loans the user has made and their status, where the active ones are displayed on top with their respective due dates.
 
 
 Profile
