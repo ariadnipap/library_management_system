@@ -1,83 +1,136 @@
 # library_management_system
+
 USER MANUAL
+
 Library Management System application
-This paper is a user manual for an application that was designed and developed for the semester project of Databases course at National Technical University of Athens. Our project is about a Library Management System, where schools can register with their respective library operators and add books to the database. School members can later register and reserve, borrow and review books in their school’s library through our system.
+
+This paper is a user manual for an application that was designed and developed for the semester project of Databases course at National Technical University of Athens. Our project is about a Library Management System, where schools can register with their respective library operators and add books to the database. School 
+members can later register and reserve, borrow and review books in their school’s library through our system.
+
+
 CONTENTS
+
 A)	Installation of required python packages
+
 B)	Downloading and connecting the database
+
 C)	User interface instructions
+
 Administrator
+
 Library operators	
+
 School members	
 
 
 Developpers:
+
 Panou Konstantina, el20144
+
 Papanikolaou Ariadni, el20097
+
 Tsouknida Vasiliki, el20042
+
 National Technical University of Athens
 
 
 A)	Installation of required python packages:
+
 For the implementation of the backend part of our web application, we have used two python3 libraries, “flask” for the server-side and “flask-mysqldb” for the connection of the database with python. To install them on Windows, and to create the environment needed, please follow the instructions below:
+
 -	Open WSL as Administrator
+
 -	Run the commands:
+
 mkdir Library_Management_System
+
 cd Library_Management_System
+
 py -3 -m venv Library_Management_System
 
 -	Now the environment is created, and it needs to be activated, before installing Flask:
+
 Scripts/activate
+
 pip install Flask
+
 pip install flask_mysqldb
 
 -	And now, after downloading all the necessary files from the ( -- github repo --) and saving them in the environment “Library_Management_System” you just created, you are ready to run the app by running the commands:
+
 setx FLASK_APP “app.py”
+
 flask run
 
 If everything is installed correctly, follow the address highlighted (it may differ on your computer) on a brower:
  
 
 There is a case your WSL has “Restricted Execution Policy” so you will not be able to run the above command. Then, you should run this command before the “\Scripts\activate”
+
 -	Set-ExecutionPolicy RemoteSigned
+
 -	pip install Flask
+
 A necessary condition for flask to connect correctly to the database is to correctly define the address and the port on which the database is running, the username, the password and the name of the database in the first lines of the app.py file. For example, based on what was mentioned in the previous sections, the correct configuration would be:
 
+
 app.config['MYSQL_HOST'] = '172.18.0.2' 
+
 app.config["MYSQL_USER"] = "root" 
+
 app.config["MYSQL_PASSWORD"] = "examplepass" 
+
 app.config["MYSQL_DB"] = "library_management_system"
+
 
 On a system running windows and Mariadb is installed via XAMPP, then the desired configuration is:
 
+
 app.config['MYSQL_HOST'] = 'localhost' 
+
 app.config["MYSQL_USER"] = "root" 
+
 app.config["MYSQL_PASSWORD"] = "" 
+
 app.config["MYSQL_DB"] = "Library_Management_System"
 
+
 See here for more information on execution policies in WSL:
+
 https://learn.microsoft.com/el-gr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3
+
 
 B)	Downloading and connecting the database:
 
 1.	Start XAMPP: Launch the XAMPP control panel as administrator and start the Apache and MySQL services.
+
 2.	Open phpMyAdmin: Open your web browser and enter "http://localhost/phpmyadmin" in the address bar. This will open the phpMyAdmin interface.
+
 3.	Log in: If prompted, enter your MySQL username and password. By default, the username is "root" and the password is empty (blank). Click on the "Go" button to log in.
+
 4.	Create a new database: In the phpMyAdmin interface, you will see a list of databases on the left-hand side. To create a new database, click on the "New" button. Enter a name for your database in the "Database name" field and choose the desired collation (usually "utf8_general_ci" is a good choice). Click on the "Create" button to create the database with the name library_management_system.
+
 5.	Database created: Once you have created the database, you will see its name listed on the left-hand side of the phpMyAdmin interface.
+
 6.	Click on your database and then click import on top of the page. Click on “Choose files” and choose the ddl from your computer called library_management_system_schema.sql. Do not edit the default options and click Go.
+
 7.	Follow the same steps to upload the data by choosing the file library_management_system_data.sql.
+
 8.	You have successfully uploaded the database. If everything goes well, by opening the address 127.0.0.1:5000 in the browser you will see the home page of our application.
+
 
 C)	User interface instructions 
 
 After the registration of a school in the database, the school’s library operator and school members can register. Books can be added to the system and get reserved, loaned and reviewed. Our application supports the following users:
 
 •	One administrator that has control over the system
+
 •	One library operator for every school registered in the system
+
 •	School members divided into teachers and students
 
 Once a user visits our homepage, he has 2 options: register to or log in the application. In his first visit, he needs to register to the system and fill in his information in the form. The users can register to the application by choosing their position from the drop-down list as well as their school.
+
 
 Administrator
 
