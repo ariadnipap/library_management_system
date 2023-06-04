@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ 
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pink-line {
+            background-color: #741b47;
+            height: 100px;
+        }
+        
+        .pink-line-top {
+            background-color: #741b47;
+            width: 100px;
+        }
+        
+        .pink-line-left {
+            background-color: #741b47;
+            width: 100px;
+            height: 120%;
+            position: fixed;
+            top: -50px;
+            left: 0;
+        }
+        
+        .search-bar {
+            text-align: center;
+            margin: 20px auto;
+            margin-left: 10px;
+        }
+        
+        h1 {
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            color: #c90076;
+            text-align: center;
+        }
+        
+        a {
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            
+        }
+        
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding-left: 50px;
+        }
+        
+        
+        .book-title {
+            margin-top: 5px;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            width: 200px;
+            word-wrap: break-word; /* Allow the title to wrap within its container */
+            text-overflow: ellipsis;
+        }
+
+        div.book {
+        margin: 15px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 200px;
+        }
+
+        div.book img {
+        width: 100%;
+        height: 250px;
+        }
+
+        div.desc {
+        padding: 10px;
+        text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pink-line"></div>
+    <div class="pink-line-left"></div>
+    <div class="search-bar">
+        <form action="{{ url_for('book_search') }}" method="POST">
+            <input type="text" name="title_query" placeholder="Search by title">
+            <input type="text" name="category_query" placeholder="Search by category">
+            <input type="text" name="author_query" placeholder="Search by author">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <h1>Books</h1>
+
+    <div class="book-container">
+        {% for book in books %}
+        <div class="book">
+              <img src="/static/the_enigma.jpeg" ">
+            </a>
+            <div class="desc">
+                <a href="{{ url_for('book_details', title=book.title) }}">{{ book.title }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

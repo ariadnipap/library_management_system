@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+
+	<title> Library Management System </title>
+	<meta name = "viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+
+	<head>
+	
+		<style>
+		
+			body {  
+			background: #741b47;  
+			color: #f2eeeb;  
+			font-family: "Roboto", Arial, Helvetica, sans-serif;  
+			font-size: 16px;  
+			font-weight: 300;  
+			letter-spacing: 0.01em;  
+			line-height: 1.6em;  
+			margin: 0;  
+			padding: 60px;   
+			}
+			
+			h1 {  
+				font-size: 120px;
+				font-weight: bold;
+				text-shadow: 0 1px 5px #444444, 0 0 50px #741b47;
+				margin-bottom: 1rem;  
+				color: #f2eeeb; 
+			}
+			
+			h3 {  
+				font-size: 40px;
+				font-weight: bold;
+				text-shadow: 0 1px 5px #444444, 0 0 50px #741b47;
+				margin-bottom: 1rem;  
+				color: #f2eeeb;   
+			}
+
+			h4 {  
+				font-size: 25px;
+				font-weight: bold;
+				text-shadow: 0 1px 5px #444444, 0 0 50px #741b47;
+				margin-bottom: 1rem;  
+				color: #f2eeeb;   
+			}
+			
+			.form-wrapper {  
+			background-image: url("/static/homepage.jpg");
+			background-repeat: no-repeat;
+			background-size: 100% 100%; 
+			border-radius: 5px; 
+			width: 1600px;
+			height: 600px;
+			padding: 10px;			
+			}  
+			
+			.btn {  
+				background: #a64d79;  
+				border: #a64d79;  
+				padding: 0.6rem 3rem;  
+				font-weight: bold;  
+			}  
+			.btn:hover,  
+			.btn:focus,  
+			.btn:active,  
+			.btn-primary:not(:disabled):not(.disabled).active,  
+			.btn-primary:not(:disabled):not(.disabled):active,  
+			.show > .btn-primary.dropdown-toggle {  
+					background: #a64d79;  
+					border: #a64d79;  
+					outline: 0;  
+					}  
+			
+			
+			button {  
+				display: inline-block; 
+				width: 120px;
+				height: 45px;
+				padding: 0.35em 1.2em;  
+				border: 0.1em solid #a64d79;  
+				margin: 0 0.3em 0.3em 0;  
+				border-radius: 0.12em;  
+				box-sizing: border-box;  
+				text-decoration: none;  
+				font-family: 'Roboto',sans-serif;  
+				font-weight: 700;  
+				color: #a64d79;  
+				text-align: center;  
+				transition: all 0.2s;  
+			}  
+    
+			button:hover {  
+				color: #FFFFFF;  
+				background-color: #a64d79;  
+			}  
+			
+			.box-wrapper {  
+			background-color: #9a27605d; 
+			width: 542px;
+			padding: 10px;	
+			border: 15px solid #741b47;
+			border-radius: 5px; 	
+			text-align: center;	
+			}
+		
+		</style>
+	
+	</head>
+	
+	<body>
+		
+		<div class="row">
+		
+			<header class="header">
+
+				<nav class="mb-1">
+				<ul class="nav nav-pills">
+					
+					<li class="nav-item">
+						<a href="/register_form" class="nav-link"> <button>Register</button> </a>
+					</li>
+					
+					<li class="nav-item">
+						<a href="/login_form" method="GET" class="nav-link"> <button>Login</button> </a>
+					</li>
+					
+				</ul>
+				</nav>
+
+			</header>
+		
+			<div>
+			<div class="form-wrapper">
+			
+				<div class="col-md-12" align="center">
+					<h1> <b> Welcome to the Offical Library Management System </b> </h1>
+				</div>
+				
+				<div class="col-md-12" align="center">
+					<h3> <b> Reserve, Borrow and Review any book in your School's Library </b> </h3>
+				</div>
+				
+			</div>
+			</div>
+
+			<div class="row">
+
+				<div class="box-wrapper" class="col-md-4" align="left">
+
+					<h4> Ariadni Papanikolaou</h4>
+					<h5>National Technical University of Athens</h5>
+					<h5>School of Electrical and Computer Engineering</h5>
+					<h5>Databases, 6th Semester</h5>
+					<h5>AM: 03120097</h5>
+					
+				</div>
+
+				<div class="box-wrapper" class="col-md-4" align="center">
+
+					<h4> Vasiliki Tsouknida</h4>
+					<h5>National Technical University of Athens</h5>
+					<h5>School of Electrical and Computer Engineering</h5>
+					<h5>Databases, 6th Semester</h5>
+					<h5>AM: 03120042</h5>
+
+				</div>
+
+				<div class="box-wrapper" class="col-md-4" align="right">
+
+					<h4> Konstantina Panou</h4>
+					<h5>National Technical University of Athens</h5>
+					<h5>School of Electrical and Computer Engineering</h5>
+					<h5>Databases, 6th Semester</h5>
+					<h5>AM: 03120144</h5>
+
+				</div>
+
+				
+			</div>
+
+		</div>
+		
+
+	</body>
+
+</html>

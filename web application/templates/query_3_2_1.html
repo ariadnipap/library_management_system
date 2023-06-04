@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <title>All Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <head>
+        <title>All Books</title>
+        <style>
+            body {
+                background-color: #ffffff;
+                margin: 0;
+                padding: 0;
+            }
+
+            .pink-line {
+                background-color: #741b47;
+                height: 100px;
+            }
+
+            .pink-line-left {
+                background-color: #741b47;
+                width: 100px;
+                height: 120%;
+                position: fixed;
+                top: -50px;
+                left: 0;
+            }
+            .search-bar {
+                text-align: center;
+                margin: 20px auto;
+                margin-left: 10px;
+            }
+            td {
+                font-size: 22px;
+                padding: 10px;
+                max-width: 400px; /* Adjust the width as needed */
+                text-align: center;
+                vertical-align: middle; /* Added vertical alignment */
+            }
+    
+            th {
+                font-size: 26px;
+                max-width: 200px;
+                text-align: center;
+                vertical-align: middle; /* Added vertical alignment */
+            }
+
+            td:nth-child(2) {
+                padding-right: 100px; /* Adjust the spacing as needed */
+                text-align: center;
+            }
+            td:nth-child(1) {
+                padding-right: 50px; /* Adjust the spacing as needed */
+                text-align: center
+            }
+    
+
+            h1 {
+                font-size: 50px;
+                font-weight: bold;
+                margin-bottom: 2.5rem;
+                color: #c90076;
+                text-align: center;
+            }
+
+            .book-ids {
+            
+                margin-top: 20px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                max-width: 800px; /* Added max-width */
+                margin: 0 auto; /* Center horizontally */
+            }
+            th:first-child {
+                text-align: center; /* Align the "Title" header to the right */
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="pink-line"></div>
+        <div class="pink-line-left"></div>
+        <h1>All Books</h1>
+        <div class="search-bar">
+            <form action="{{ url_for('query_3_2_1') }}" method="POST">
+                <input type="text" name="title_query" placeholder="Search by title">
+                <input type="text" name="category_query" placeholder="Search by category">
+                <input type="text" name="author_query" placeholder="Search by author">
+                <input type="text" name="copies_query" placeholder="Search by copies">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="book-ids">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Authors</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(book_titles|length) %}
+                    <tr>
+                        <td><a href="{{ url_for('book_details_library_operator', title=book_titles[i]) }}">{{ book_titles[i] }}</a></td>
+                        <td>{{book_authors[i]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </body>
+</html>

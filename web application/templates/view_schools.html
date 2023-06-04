@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Schools</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pink-line {
+            background-color: #741b47;
+            height: 100px;
+        }
+
+        .pink-line-left {
+            background-color: #741b47;
+            width: 100px;
+            height: 120%;
+            position: fixed;
+            top: -50px;
+            left: 0;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            color: #c90076;
+            text-align: center;
+        }
+
+        .school-details {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 1550px; /* Added max-width */
+            margin: 0 auto; /* Center horizontally */
+            margin-left: 120px;
+        }
+
+        th {
+            font-size: 25px;
+            vertical-align: middle; /* Added vertical alignment */
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            font-size: 21px;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle; /* Added vertical alignment */
+        }
+
+        td:nth-child(1) {
+            padding-right: 30px; /* Adjust the spacing as needed */
+            
+        }
+
+        th:nth-child(1) {
+            padding-right: 30px; /* Adjust the spacing as needed */
+           
+        }
+
+        .edit-button, .delete-button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .edit-button:hover {
+            background-color: #45a049;
+        }
+
+        .delete-button {
+            background-color: #f44336; /* Red */
+        }
+
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="pink-line"></div>
+    <div class="pink-line-left"></div>
+    <h1>Schools</h1>
+    <div class="school-details">
+        <table>
+            <thead>
+                <tr>
+                    <th>School Name</th>
+                    <th>City</th>
+                    <th>Email</th>
+                    <th>School Director</th>
+                    <th>Library Operator</th>
+                    <th>Address</th>
+                    <th>Zip Code</th>
+                    <th>Phone Number</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(school_names|length) %}
+                <tr>
+                    <td>{{ school_names[i] }}</td>
+                    <td>{{ cities[i] }}</td>
+                    <td>{{ emails[i] }}</td>
+                    <td>{{ school_director_first_names[i] }} {{ school_director_last_names[i] }}</td>
+                    <td>{{ library_operator_first_names[i] }} {{ library_operator_last_names[i] }}</td>
+                    <td>{{ street_numbers[i] }} {{ street_names[i] }}</td>
+                    <td>{{ zip_codes[i] }}</td>
+                    <td>{{ phone_numbers[i] }}</td>
+                    <td><button class="edit-button btn" onclick="Edit('{{ school_names[i] }}')">Edit</button></td>
+                    <td><button class="delete-button btn" onclick="Delete('{{ school_names[i] }}')">Delete</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function Edit(SchoolName) {
+            // Redirect to the make_reservation route with the book ID as a parameter
+            window.location.href = "/edit_school?school_name=" + SchoolName;
+        }
+    </script>
+    <script>
+        function Delete(SchoolName) {
+            // Redirect to the make_reservation route with the book ID as a parameter
+            window.location.href = "/delete_school/" + SchoolName;
+        }
+    </script>
+</body>
+</html>

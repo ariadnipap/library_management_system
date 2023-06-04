@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html>
+    <title>Homepage</title>
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    
+    <head>
+        <style>
+
+          body {  
+            background: #741b47;  
+            color: #999999;  
+            font-family: "Roboto", Arial, Helvetica, sans-serif;  
+            font-size: 16px;  
+            font-weight: 300;  
+            letter-spacing: 0.01em;  
+            line-height: 1.6em;  
+            margin: 0;  
+            padding: 45px;   
+          }
+
+          h2 {  
+            font-size: 45px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;  
+            color: #495057;   
+          }
+
+          h3 {
+            font-size: 100px;
+            margin-bottom: 3rem; 
+          }
+
+          .form-wrapper {  
+            background: #fff;
+		      	border-radius: 5px;  
+            width: 1600px;
+            padding: 5px;			
+          }
+          
+          .btn {  
+            background: #a64d79;  
+            border: #a64d79;  
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+          }  
+          .btn:hover,  
+          .btn:focus,  
+          .btn:active,  
+          .btn-primary:not(:disabled):not(.disabled).active,  
+          .btn-primary:not(:disabled):not(.disabled):active,  
+          .show > .btn-primary.dropdown-toggle {  
+            background: #a64d79;  
+            border: #a64d79;  
+            outline: 0;  
+          }  
+              
+          button {  
+            display: inline-block; 
+            width: 120px;
+            height: 45px;
+            padding: 0.35em 1.2em;  
+            border: 0.1em solid #a64d79;  
+            margin: 0 0.3em 0.3em 0;  
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #a64d79;  
+            text-align: center;  
+            transition: all 0.2s;  
+          }  
+          
+            button:hover {  
+              color: #FFFFFF;  
+              background-color: #a64d79;  
+            }  
+
+            border {
+              border: 0.1em solid #FFFFFF; 
+            }
+
+            ul.nav.nav-pills {
+              display: flex;
+              justify-content: flex-end;
+            }
+
+            ul.nav.nav-pills li.nav-item {
+              margin-left: auto;
+            }
+
+            /* The flip card container */
+            .flip-card {
+              background-color: transparent;
+              width: 360px;
+              height: 380px;
+            }
+
+            /* This container is needed to position the front and back side */
+            .flip-card-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              text-align: center;
+              transition: transform 0.7s;
+              transform-style: preserve-3d;
+            }
+
+            /* Do an horizontal flip when you move the mouse over the flip box container */
+            .flip-card:hover .flip-card-inner {
+              transform: rotateY(180deg);
+            }
+
+            /* Position the front and back side */
+            .flip-card-front, .flip-card-back {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              -webkit-backface-visibility: hidden; /* Safari */
+              backface-visibility: hidden;
+            }
+
+            /* Style the front side (fallback if image is missing) */
+            .flip-card-front {
+              background-color: #bbb;
+              
+              color: #495057;
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            /* Style the back side */
+            .flip-card-back {
+              background-color: #a64d79;
+              color: white;
+              transform: rotateY(180deg);
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .card {
+              background-color: #a64d79;
+              color: white;
+              width: 355px;
+              height: 380px;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+              transition: 0.3s;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            /* On mouse-over, add a deeper shadow */
+            .card:hover {
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+            /* Add some padding inside the card container */
+            .container {
+              padding: 2px 16px;
+            }
+
+
+             /* The flip card container */
+             .flip-card-loans {
+              background-color: transparent;
+              width: 450px;
+              height: 380px;
+            }
+
+            /* This container is needed to position the front and back side */
+            .flip-card-inner-loans {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              text-align: center;
+              transition: transform 0.7s;
+              transform-style: preserve-3d;
+            }
+
+            /* Do an horizontal flip when you move the mouse over the flip box container */
+            .flip-card-loans:hover .flip-card-inner-loans {
+              transform: rotateY(180deg);
+            }
+
+            /* Position the front and back side */
+            .flip-card-front-loans, .flip-card-back-loans {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              -webkit-backface-visibility: hidden; /* Safari */
+              backface-visibility: hidden;
+            }
+
+            /* Style the front side (fallback if image is missing) */
+            .flip-card-front-loans {
+              background-color: #bbb;
+              color: #495057;
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            /* Style the back side */
+            .flip-card-back-loans {
+              background-color: #a64d79;
+              color: white;
+              transform: rotateY(180deg);
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding-top: 15px;
+              padding-bottom: 10px;
+            }
+           
+
+
+        </style>
+
+    </head>
+
+    <body>
+
+      <div class="row">
+        <header class="header">
+          <nav class="mb-1">
+            <ul class="nav nav-pills ml-auto">
+              
+              <li class="nav-item">
+                <div class="ml-auto">
+                <a href="/logout" class="nav-link"> 
+                  <button>Log Out </button> </a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a href="/user_information" method="GET" class="nav-link"> 
+                  <button> Profile </button> </a>
+              </li>
+
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+
+     
+        <div class="form-wrapper">
+        
+
+            <div class="col-md-12" align="center">
+              <h2><b>Welcome to your homepage, {{ session['username'] }}</b></h2>
+            </div>
+
+
+            <div class="container" align="center">
+
+              <div class="row">
+                <div class="row">
+                    <div class="col-sm">
+                      
+                      <div class="card">
+                        <div class="container">
+                          
+                          <h1>Users</h1>
+                          <p>See all accounts with the ability to delete or disable them</p>
+                          <p>See and manage all the pending registrations</p>
+                          <a href="/view_users" method="GET" class="nav-link"> 
+                            <button class="border">Click here</button> 
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-sm">
+                      
+                      <div class="flip-card">
+                        
+                        <div class="flip-card-inner">
+                          
+                          <div class="flip-card-front" align="center">
+                            <h1>Books</h1>
+                          </div>
+                          
+                          <div class="flip-card-back">
+                            <div>
+                              <p>Add a new book to your online library</p>
+                              <a href="/book_insertion" method="GET" class="nav-link"> 
+                                <button class="border">Add</button> 
+                              </a>
+                              <p>Search by Title, Category, Author, Copies (Query 3.2.1)</p>
+                              <p>Update the book details on an existing title or delete it</p>
+                              <a href="/query_3_2_1" method="GET" class="nav-link"><button class="border">Search</button></a>
+                              
+    
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-sm">
+                      
+                      <div class="flip-card">
+                        
+                        <div class="flip-card-inner">
+                          
+                          <div class="flip-card-front" align="center">
+                            <h1>Reviews</h1>
+                          </div>
+                          
+                          <div class="flip-card-back">
+                            <div>
+                              <p>See all reviews with the ability to delete them</p>
+                              <p>Approve or reject the pending ones</p>
+                                  <a href="/view_reviews_library_operator" class="nav-link"> 
+                                    <button class="border">See all</button> 
+                                  </a>
+                              
+                              <p>Search the average ratings per borrower and category (Query 3.2.3)</p>                              
+                                <a href="/query_3_2_3" class="nav-link"> 
+                                  <button class="border">Search</button> 
+                                </a>
+
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="w-100">
+                      <div class="row">
+                      <h3> </h3>
+                      </div>
+                    </div>
+
+                      <div class="col">
+
+                        <div class="flip-card">
+
+                          <div class="flip-card-inner">
+
+                            <div class="flip-card-front">
+                              <h1>Reservations</h1>
+                            </div>
+
+                            <div class="flip-card-back">
+                              <div>
+                              <p>See all the reservations made by users</p>
+                              <p>Manage the pending ones</p>                              
+                              <a href="/library_operator_reservations" method="GET" class="nav-link"> 
+                                <button class="border">See all</button> 
+                              </a>
+                              </div>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="flip-card-loans">
+
+                          <div class="flip-card-inner-loans">
+                            <div class="flip-card-front-loans">
+                              <h1>Loans</h1>
+                            </div>
+
+                            <div class="flip-card-back-loans">
+                              <div>
+                                
+                                <p>Enter a loan without reservation</p>
+                                <a href="/record_loan_without_reservation" method="GET" class="nav-link"><button class="border">Enter</button></a>
+                            
+                              <p>See all the loans made by users and record returns </p>
+                              <p>See a record of the delayed ones </p>
+                              
+                              <div class="row">
+                                <div class = "ml-5">
+                                  <a href="/library_operator_loans" method="GET" class="nav-link"> 
+                                    <button class="border">See all</button> 
+                                  </a>
+                              </div>
+                              
+                              <div class = "ml-5">
+                                <a href="/library_operator_delays" class="nav-link"> 
+                                  <button class="border">Delayed</button> 
+                                </a>
+                              </div>
+                            </div>
+                            
+                            
+                              <p>Find borrowers who own at least one book and have delayed its return (Query 3.2.2)</p>
+                              <a href="/query_3_2_2" method="GET" class="nav-link"><button class="border">Find</button></a>
+                              
+                              </div>
+                            </div>
+
+                          </div>
+
+                        </div>
+                        
+                      </div>
+
+                      <div class="w-100">
+                        <div class="row">
+                        <h3> </h3>
+                        </div>
+                      </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+       
+       
+    </body>
+
+</html>

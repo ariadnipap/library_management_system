@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Details</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .pink-line {
+            background-color: #741b47;
+            height: 100px;
+        }
+
+        .pink-line-left {
+            background-color: #741b47;
+            width: 100px;
+            height: 120%;
+            position: fixed;
+            top: -50px;
+            left: 0;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            color: #c90076;
+            text-align: center;
+        }
+        
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        
+        .book {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 10px auto;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 800px;
+        }
+        
+        .book-image {
+            flex: 0 0 200px;
+            height: 200px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        
+        .book-details {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .book-details h2 {
+            font-size: 26px;
+        }
+        
+        .book-details p {
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+        
+        .book-ids {
+            
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 800px; /* Added max-width */
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        th {
+            font-size: 24px;
+            width: 100px;
+        }
+        td{
+            font-size: 20px;
+            width: 100px;
+        }
+
+        tr{
+            width: 100px;
+            text-align: center;
+        }
+        
+        .book-ids p {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .book-details span {
+            text-decoration: underline;
+        }
+        button {  
+            font-size: 17px;
+            display: inline-block;  
+            padding: 0.4em 1.1em;  
+            border: 0.1em solid #a64d79;   
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #a64d79;  
+            background-color: #eeeeee;
+            text-align: center;  
+            transition: all 0.2s; 
+            list-style-type: none;
+            
+        }  
+
+        button:hover {  
+            color: #FFFFFF;  
+            background-color: #a64d79;  
+        }
+        button.cancel-button {
+            font-size: 20px;
+            display: inline-block;  
+            padding: 0.4em 1.1em;  
+            border: 0.1em solid #a64d79;   
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #a64d79;  
+            background-color: #eeeeee;
+            text-align: center;  
+            transition: all 0.2s; 
+            list-style-type: none;
+            
+            
+            }
+
+
+        ul.nav.nav-pills {
+            display: flex;
+            justify-content: flex-end;
+            list-style-type: none;
+          }
+          ul.nav.nav-pills li.nav-item {
+            margin-left: auto;
+            list-style-type: none;
+          }
+         
+
+
+    </style>
+</head>
+<body>
+    <div class="pink-line"></div>
+    <div class="pink-line-left"></div>
+    <div class="row">
+        <header class="header">
+        <nav class="mb-1">
+            <ul class="nav nav-pills ml-auto">
+            
+            <li class="nav-item">
+                <a href="/view_reviews_teacherstudent?book_title={{ book_title }}" class="nav-link">
+                    <button class="cancel-button btn">See Reviews</button>
+                </a>
+                
+            </li>
+
+            </ul>
+        </nav>
+        </header>
+    </div>
+    <h1>Book Details</h1>
+    <div class="book-container">
+        {% for i in range(books|length) %}
+        <div class="book">
+            <div class="book-image" style="background-image: url('/static/the enigma.jpeg');"></div>
+            <div class="book-details">
+                <h2>{{ books[i].title }}</h2>
+                <p><span>ISBN:</span> {{ books[i].ISBN }}</p>
+                <p><span>Categories:</span>
+                    {% set total_categories = book_categories|length %}
+                        {% for category in book_categories %}
+                            {{ category }}
+                        {% if not loop.last and loop.index != total_categories %},{% endif %}
+                    {% endfor %}
+                </p>
+                <p><span>Pages:</span> {{ books[i].pages_number }}</p>
+                <p><span>Authors:</span>
+                    {% set total_authors = book_authors|length %}
+                        {% for author in book_authors %}
+                            {{ author }}
+                        {% if not loop.last and loop.index != total_authors %},{% endif %}
+                    {% endfor %}
+                </p>
+                <p><span>Publisher:</span> {{ books[i].publisher }}</p>
+                <p><span>Summary:</span> {{ books[i].summary }}</p>
+                <p><span>Language:</span> {{ books[i].language }}</p>
+                <p><span>Keywords:</span>
+                    {% set total_keywords = book_keywords|length %}
+                        {% for keyword in book_keywords %}
+                            {{ keyword }}
+                        {% if not loop.last and loop.index != total_keywords %},{% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <div class="book-ids">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for j in range(book_ids[i]|length) %}
+                        <tr>
+                            <td>{{ book_ids[i][j] }}</td>
+                            <td>{% if status_list[i][j] == 'Reserved' %}Reserved{% else %}Available{% endif %}</td>
+                            <td><button onclick="makeReservation('{{ book_ids[i][j] }}')">Make a reservation</button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% endfor %}
+    </div>
+    
+    <script>
+        function makeReservation(bookId) {
+            // Redirect to the make_reservation route with the book ID as a parameter
+            window.location.href = "/make_reservation?book_id=" + bookId;
+        }
+    </script>
+</body>
+</html>

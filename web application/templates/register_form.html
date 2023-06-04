@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html>
+
+	<title>Sign Up</title>
+	<meta name = "viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+	<!-- Font Awesome library for icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<head>
+		<style>
+			body {  
+			background: #741b47;  
+			color: #999999;  
+			font-family: "Roboto", Arial, Helvetica, sans-serif;  
+			font-size: 16px;  
+			font-weight: 300;  
+			letter-spacing: 0.01em;  
+			line-height: 1.6em;  
+			margin: 0;  
+			padding: 100px;   
+			} 
+		
+			h3 {  
+				font-weight: bold;  
+				margin-bottom: 2.5rem;  
+				color: #c90076;  
+			}  
+		
+			.form-wrapper {  
+			background: #fff;  
+			border-radius: 5px;  
+			padding: 50px;  
+			}  
+
+			.form-control,  
+			.custom-select {  
+			border-radius: 0px;  
+			color: #495057;  
+			background-color: #f1f1f1;  
+			border-color: none;  
+			}  
+  
+			.form-control:focus {  
+			color: #495057;  
+			background-color: #ffffff;  
+			border: 1px solid #b5b6b3;  
+			outline: 0;  
+			box-shadow: none;  
+			} 
+		
+		
+			.btn {  
+				background: #a64d79;  
+				border: #a64d79;  
+				padding: 0.6rem 3rem;  
+				font-weight: bold;  
+			}  
+			.btn:hover,  
+			.btn:focus,  
+			.btn:active,  
+			.btn-primary:not(:disabled):not(.disabled).active,  
+			.btn-primary:not(:disabled):not(.disabled):active,  
+			.show > .btn-primary.dropdown-toggle {  
+					background: #a64d79;  
+					border: #a64d79;  
+					outline: 0;  
+					}  
+			
+			
+			button {  
+				display: inline-block;  
+				padding: 0.35em 1.2em;  
+				border: 0.1em solid #a64d79;  
+				margin: 0 0.3em 0.3em 0;  
+				border-radius: 0.12em;  
+				box-sizing: border-box;  
+				text-decoration: none;  
+				font-family: 'Roboto',sans-serif;  
+				font-weight: 700;  
+				color: #a64d79;  
+				text-align: center;  
+				transition: all 0.2s;  
+			}  
+    
+			button:hover {  
+				color: #FFFFFF;  
+				background-color: #a64d79;  
+			}  
+		
+			.password-container input[type = "password"]{
+				padding-right: 30px;
+			}	
+		
+			.password-container .toggle-icon {
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+				cursor: pointer;
+				font-size: 20px;
+				color: #999;
+			}
+	
+			.password-container .toggle-icon:hover {
+				color: #333;
+			}
+
+			.error, .success{
+				border: 1px solid;
+				margin: 10px 0px;
+				padding: 15px 10px 15px 50px;
+			}
+
+			.error {
+				color: #D8000C;
+				font-size: 25px;
+				background-color: #FFBABA;
+			}
+
+			.success {
+				color: #4F8A10;
+				font-size: 25px;
+				background-color: #DFF2BF;
+			}
+				
+		</style>
+		
+		<script>
+		function togglePasswordVisibility() {
+			var passwordInput = document.getElementById("password");
+			var toggleIcon = document.getElementById("toggle-icon");
+		
+			if (passwordInput.type === "password") {
+				passwordInput.type = "text";
+				toggleIcon.className = "fa fa-eye-slash toggle-icon";
+			} else {
+				passwordInput.type = "password";
+				toggleIcon.className = "fa fa-eye toggle-icon";
+			}
+		}
+		</script>
+		
+		<script>
+		function chooseSchool() {
+		const select = document.getElementById("schools");
+		
+		fetch('/schools')
+			.then(response => response.json())
+			.then(data => {
+				data.forEach(option => {
+				const optionElement = document.createElement("schools");
+				optionElement.textContent = option;
+				select.appendChild(optionElement);
+				});
+			});
+		}
+		</script>
+		
+	
+	</head>
+	
+	<body>
+
+		{% with messages = get_flashed_messages(category_filter=['registration_error']) %}
+  			{% if messages %}
+   				 <div class="error">{{ messages[0] }}</div>
+  			{% endif %}
+		{% endwith %}
+
+		{% with messages = get_flashed_messages(category_filter=['registration_success']) %}
+  			{% if messages %}
+   				 <div class="success">{{ messages[0] }}</div>
+  			{% endif %}
+		{% endwith %}
+
+	<section class="contact-form pt-3">
+		<div class="container">
+		  <div class="row">
+		    <div class="col-md-8 mx-auto">
+			  <div class="form-wrapper">
+			  
+				<div class="row">
+				  <div class="col-md-12" align="center">
+					<h3> <b> Sign Up to your School's Online Library </b> </h3>
+				  </div>
+				</div>
+	
+				<form action="/register" method = "POST">
+				  <div class="row">
+				  
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type = "text" class="form-control" placeholder="Username" name ="username" required>
+							</div>
+						</div>
+											
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="input-group">
+									<input id="password" class="form-control" class="password-input" placeholder="Password" type="password" name="password" required>
+										<div class="input-group-append">
+											<span class="input-group-text bg-transparent border-0 toggle-password" onclick="togglePasswordVisibility()">
+											<i id="toggle-icon" class="fa fa-eye toggle-icon"></i>
+											</span>
+										</div>
+								</div>
+							</div>
+						</div>
+				
+						<div class="col-md-6">  
+							<div class="form-group"> 
+								<input type="text" class="form-control" placeholder="First Name" name = "first_name" required >
+							</div>
+						</div>
+	
+						<div class="col-md-6">  
+							<div class="form-group"> 
+								<input type = "text" class="form-control" placeholder="Last Name" name = "last_name" required>
+							</div>
+						</div>
+			
+					
+						 <div class="col-md-6">  
+							<div class="form-group">  
+								<input type="email" class="form-control" placeholder="Email" name="email" required >  
+							</div>  
+						</div>
+	
+						<div class="col-md-6">  
+							<div class="form-group">  
+								<input type="text" class="form-control" placeholder="Phone number" name="phone_number" required >  
+							</div>  
+						</div>
+					
+	
+						<div class="col-md-12">  
+							<div class="form-group"> 
+							   <p> Date of Birth: <input type = "date" class="form-control" placeholder="Date of Birth" name = "date_of_birth"> </p>
+							</div>
+						</div>	
+					
+							
+						<div class="col-md-12">  
+							<div class="form-group"> 
+								
+		
+								<label for="position">Select your Position: </label>
+								<select class ="custom-select" id="position" name="position" required> 
+									<option value="Student">Student</option>
+									<option value="Teacher">Teacher</option>
+									<option value="Library_Operator">Library Operator</option>
+								
+								</select>
+	 				
+							</div>
+						</div>	
+	
+	
+						<div class="col-md-12">  
+							<div class="form-group"> 
+								<div class ="chooseSchool">
+		
+								<label for="schools">Select your School: </label>
+								<select class ="custom-select" id="schools" name="schools" onclick="chooseSchool" placeholder="Select your School:" required> 
+									{%for schools in schools %}
+										<option value = "{{ schools }}"> {{ schools }} </option>
+									{% endfor %}
+								</select>
+	  
+								</div>
+							</div>
+						</div>				
+	
+				  </div>
+		
+				<div class="mt-3" align="center">
+					<button> Register </button>
+				</div>
+		
+				</form>
+				
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</section>
+	
+	</body>
+
+
+</html>

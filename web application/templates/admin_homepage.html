@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+    <title>Homepage</title>
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    
+    <head>
+        <style>
+
+          body {  
+            background: #741b47;  
+            color: #999999;  
+            font-family: "Roboto", Arial, Helvetica, sans-serif;  
+            font-size: 16px;  
+            font-weight: 300;  
+            letter-spacing: 0.01em;  
+            line-height: 1.6em;  
+            margin: 0;  
+            padding: 45px;   
+          }
+
+          h2 {  
+            font-size: 45px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;  
+            color: #495057;   
+          }
+
+          h3 {
+            font-size: 100px;
+            margin-bottom: 3rem; 
+          }
+
+          .form-wrapper {  
+            background: #fff;
+		      	border-radius: 5px;  
+            width: 1600px;
+            padding: 5px;			
+          }
+          
+          .btn {  
+            background: #a64d79;  
+            border: #a64d79;  
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+          }  
+          .btn:hover,  
+          .btn:focus,  
+          .btn:active,  
+          .btn-primary:not(:disabled):not(.disabled).active,  
+          .btn-primary:not(:disabled):not(.disabled):active,  
+          .show > .btn-primary.dropdown-toggle {  
+            background: #a64d79;  
+            border: #a64d79;  
+            outline: 0;  
+          }  
+              
+          button {  
+            display: inline-block; 
+            width: 120px;
+            height: 45px;
+            padding: 0.35em 1.2em;  
+            border: 0.1em solid #a64d79;  
+            margin: 0 0.3em 0.3em 0;  
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #a64d79;  
+            text-align: center;  
+            transition: all 0.2s;  
+          }  
+          
+            button:hover {  
+              color: #FFFFFF;  
+              background-color: #a64d79;  
+            }  
+
+            border {
+              border: 0.1em solid #FFFFFF; 
+            }
+
+            ul.nav.nav-pills {
+              display: flex;
+              justify-content: flex-end;
+            }
+
+            ul.nav.nav-pills li.nav-item {
+              margin-left: auto;
+            }
+
+            /* The flip card container */
+            .flip-card {
+              background-color: transparent;
+              width: 350px;
+              height: 360px;
+            }
+
+            /* This container is needed to position the front and back side */
+            .flip-card-inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              text-align: center;
+              transition: transform 0.7s;
+              transform-style: preserve-3d;
+            }
+
+            /* Do an horizontal flip when you move the mouse over the flip box container */
+            .flip-card:hover .flip-card-inner {
+              transform: rotateY(180deg);
+            }
+
+            /* Position the front and back side */
+            .flip-card-front, .flip-card-back {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              -webkit-backface-visibility: hidden; /* Safari */
+              backface-visibility: hidden;
+            }
+
+            /* Style the front side (fallback if image is missing) */
+            .flip-card-front {
+              background-color: #bbb;
+              color: #495057;
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            /* Style the back side */
+            .flip-card-back {
+              background-color: #a64d79;
+              color: white;
+              transform: rotateY(180deg);
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .card {
+              background-color: #a64d79;
+              color: white;
+              width: 1110px;
+              height: 600px;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+              transition: 0.3s;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            /* On mouse-over, add a deeper shadow */
+            .card:hover {
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+            /* Add some padding inside the card container */
+            .container {
+              padding: 2px 16px;
+            }
+
+            
+            .error, .success{
+                border: 1px solid;
+                margin: 10px 0px;
+                padding: 15px 10px 15px 50px;
+            }
+
+            .error {
+                color: #D8000C;
+                font-size: 25px;
+                background-color: #FFBABA;
+            }
+
+            .success {
+                color: #4F8A10;
+                font-size: 25px;
+                background-color: #DFF2BF;
+            }
+                  
+
+        </style>
+
+    </head>
+
+    <body>
+
+      {% with messages = get_flashed_messages(category_filter=['backup_success']) %}
+      {% if messages %}
+              <div class="success">{{ messages[0] }}</div>
+      {% endif %}
+      {% endwith %}
+
+      <div class="row">
+        <header class="header">
+          <nav class="mb-1">
+            <ul class="nav nav-pills ml-auto">
+              
+              <li class="nav-item">
+                <div class="ml-auto">
+                <a href="/logout" class="nav-link"> 
+                  <button>Log Out </button> </a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a href="/user_information" method="GET" class="nav-link"> 
+                  <button> Profile </button> </a>
+              </li>
+
+            </ul>
+          </nav>
+        </header>
+      </div>
+
+
+     
+        <div class="form-wrapper">
+        
+
+            <div class="col-md-12" align="center">
+              <h2><b>Welcome to your homepage, {{ session['username'] }}</b></h2>
+            </div>
+
+
+            <div class="container" align="center">
+
+              <div class="row">
+                <div class="row">
+                    <div class="col-sm">
+
+                      <div class="flip-card">
+                        
+                        <div class="flip-card-inner">
+                          
+                          <div class="flip-card-front" align="center">
+                            <h1>Schools</h1> 
+                          </div>
+                          
+                          <div class="flip-card-back">
+                            <div>
+                              <p>Add a new school to the system</p>
+                              <a href="/register_school" method="GET" class="nav-link"> 
+                                  <button class="border">Add</button> 
+                              </a>
+                              <p>See all the schools</p>
+                              <p>Update the information on a registered school or delete it</p>
+                              <a href="/view_schools" method="GET" class="nav-link"><button class="border">Click here</button></a>
+        
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-sm">
+                      
+                      <div class="flip-card">
+                        
+                        <div class="flip-card-inner">
+                          
+                          <div class="flip-card-front" align="center">
+                            <h1>Library Operators</h1>
+                          </div>
+                          
+                          <div class="flip-card-back">
+                            <div>
+                              <p>See all library operators with the ability to delete or disable them</p>
+                              <p>Manage all the pending library operators</p>
+                              <a href="/view_library_operators" method="GET" class="nav-link"> 
+                                <button class="border">Click here</button> 
+                              </a>
+    
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-sm">
+                      
+                      <div class="flip-card">
+                        
+                        <div class="flip-card-inner">
+                          
+                          <div class="flip-card-front" align="center">
+                            <h1>Database Management</h1>
+                          </div>
+                          
+                          <div class="flip-card-back">
+                            <div>
+
+                              <p>Create a backup copy of the entire database</p>
+                              <a href="/api/backup_database" method="GET" class="nav-link"><button class="border">Backup</button></a>
+                              <p>Restore the system from a backup copy</p>
+                              <a href="/api/restore_from_backup" method="POST" class="nav-link"><button class="border">Restore</button></a> 
+    
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                </div>
+
+                    <div class="w-100">
+                      <div class="row">
+                      <h3> </h3>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        
+                        <div class="card">
+                          <div class="container">
+                            
+                            <h1>Queries</h1>
+
+                            <div class="row" align="center"> 
+                              <p>Search the total number of loans per school by year and month (Query 3.1.1)</p>
+                              <a href="/query_3_1_1" method="GET" class="nav-link"><button class="border">Search</button></a>  
+                            </div>
+                           
+                            <div class="row" align="center">
+                            <p>Search by book-category, which authors belong to it and which teachers
+                                have borrowed books from that category in the last year  (Query 3.1.2)</p></div>
+                            <a href="/query_3_1_2" method="GET" class="nav-link"><button class="border">Search</button></a>   
+                            
+
+                            <div class="row" align="center">
+                            <p>Find young teachers (age < 40 years) who have borrowed the most books and the number
+                              of books (Query 3.1.3)</p>
+                            <a href="/query_3_1_3" class="nav-link"><button class="border">Find</button></a>
+                            </div>
+
+                            <div class="row" align="center">
+                            <p>Find authors whose books have not been borrowed (Query 3.1.4)</p>
+                            <a href="/query_3_1_4" class="nav-link"><button class="border">Find</button></a>  
+                            </div>
+
+                            <div class="row" align="center">
+                            <p>Search by year, which operators have loaned the same number of books in that year with more than 20 loans (Query 3.1.5)</p>
+                            <a href="/query_3_1_5" method="GET" class="nav-link"><button class="border">Search</button></a>  
+                            </div>
+
+                            <div class="row" align="center">
+                            <p>Find the top-3 pairs of categories that appeared in borrowings. (Query 3.1.6)</p>
+                            <a href="/query_3_1_6" class="nav-link"><button class="border">Find</button></a>  
+                            </div>
+
+                            <div class="row" align="center">
+                            <p>Find all authors who have written at least 5 books less than the author with the most books. (Query 3.1.7)</p>
+                            <a href="/query_3_1_7" class="nav-link"><button class="border">Find</button></a>    
+                            </div>
+
+                          
+                          </div>
+                        </div>
+  
+                      </div>
+                    </div>
+
+
+
+                      <div class="w-100">
+                        <div class="row">
+                        <h3> </h3>
+                        </div>
+                      </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+       
+       
+    </body>
+
+</html>

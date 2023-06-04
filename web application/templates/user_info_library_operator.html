@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+
+	<title>User information</title>
+	<meta name = "viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+	
+    <head>
+		<style>
+			body {  
+			background: #741b47;  
+			color: #999999;  
+			font-family: "Roboto", Arial, Helvetica, sans-serif;  
+			font-size: 16px;  
+			font-weight: 300;  
+			letter-spacing: 0.01em;  
+			line-height: 1.6em;  
+			margin: 0;  
+			padding: 100px;   
+			} 
+		
+			h3 {  
+				font-weight: bold;  
+				margin-bottom: 2.5rem;  
+				color: #c90076;  
+			}  
+		
+			.form-wrapper {  
+			background: #fff;  
+			border-radius: 5px;  
+			padding: 50px;  
+			}  
+
+			.form-control,  
+			.custom-select {  
+			border-radius: 0px;  
+			color: #495057;  
+			background-color: #f1f1f1;  
+			border-color: none;  
+			}  
+  
+			.form-control:focus {  
+			color: #495057;  
+			background-color: #ffffff;  
+			border: 1px solid #b5b6b3;  
+			outline: 0;  
+			box-shadow: none;  
+			} 
+
+            .form-control.readonly {
+            background-color: #f1f1f1;
+            border-color: #f1f1f1;
+            cursor: default;
+            }
+		
+			.btn {  
+            background: #a64d79;  
+            border: #a64d79;  
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+          }  
+          .btn:hover,  
+          .btn:focus,  
+          .btn:active,  
+          .btn-primary:not(:disabled):not(.disabled).active,  
+          .btn-primary:not(:disabled):not(.disabled):active,  
+          .show > .btn-primary.dropdown-toggle {  
+            background: #a64d79;  
+            border: #a64d79;  
+            outline: 0;  
+          }  
+              
+          button {  
+            display: inline-block;  
+			padding: 0.35em 1.2em;  
+			border: 0.1em solid #a64d79;  
+			margin: 0 0.3em 0.3em 0;  
+			border-radius: 0.12em;  
+			box-sizing: border-box;  
+			text-decoration: none;  
+			font-family: 'Roboto',sans-serif;  
+			font-weight: 700;  
+			color: #a64d79;  
+			text-align: center;  
+			transition: all 0.2s;  
+          }  
+          
+            button:hover {  
+              color: #FFFFFF;  
+              background-color: #a64d79;  
+            }  
+
+            .error{
+			color: #D8000C;
+			font-size: 25px;
+			background-color: #FFBABA;
+			border: 1px solid;
+			margin: 10px 0px;
+			padding: 15px 10px 15px 50px;
+			
+			}
+
+        </style>
+    </head>
+
+    <body>
+
+        {% with messages = get_flashed_messages(category_filter=['user_info_error'])%}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="error">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <section class="contact-form pt-3">
+             <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                      <div class="form-wrapper">
+                      
+                        <div class="row">
+                          <div class="col-md-12" align="center">
+                            <h3> <b> User Information </b> </h3>
+                          </div>
+                        </div>
+            
+                        <div action="/view_user_information" method = "GET" enctype="multipart/form-data">
+                            <div class="row">
+                          
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                    </div>
+                                </div>
+                                                    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control readonly" placeholder="{{ user[0] }}" name="username" readonly>
+                                    </div>
+                                </div>
+                        
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                        <label for="first_name">First name</label>
+                                    </div>
+                                </div>
+            
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                        <input type = "text" class="form-control readonly" placeholder="{{ user[1] }}" name = "first_name" readonly>
+                                    </div>
+                                </div>
+                    
+                            
+                                 <div class="col-md-6">  
+                                    <div class="form-group">  
+                                        <label for="last_name">Last name</label>
+                                    </div> 
+                                </div>
+            
+                                <div class="col-md-6">  
+                                    <div class="form-group">  
+                                        <input type="text" class="form-control readonly" placeholder="{{ user[2] }}" name="last_name" readonly >  
+                                    </div>  
+                                </div>
+                            
+            
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                        <label for="date_of_birth">Date of birth</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                       <input type = "text" class="form-control readonly" placeholder="{{ user[3] }}" name = "date_of_birth" readonly> 
+                                    </div>
+                                </div>	
+            
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                                    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                            <input type="email" class="form-control readonly" placeholder="{{ user[4] }}" name="email" readonly>
+                                    </div>
+                                </div>
+                        
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                        <label for="Phone number">Phone number</label>
+                                    </div>
+                                </div>
+            
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                        <input type = "text" class="form-control readonly" placeholder="{{ user[5] }}" name = "phone_number" readonly>
+                                    </div>
+                                </div>
+                    
+                            
+                                 <div class="col-md-6">  
+                                    <div class="form-group">  
+                                        <label for="school_name">School</label>
+                                    </div>  
+                                </div>
+            
+                                <div class="col-md-6">  
+                                    <div class="form-group">  
+                                        <input type="text" class="form-control readonly" placeholder="{{ user[6] }}" name="school_name" readonly >  
+                                    </div>  
+                                </div>
+                            
+            
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                        <label for="position">Position</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">  
+                                    <div class="form-group"> 
+                                       <input type = "text" class="form-control readonly" placeholder="{{ user[7] }}" name = "position" readonly> 
+                                    </div>
+                                </div>	
+                          </div>
+                
+
+                        <div class="row" align="center">
+
+                            <div class="col-md-6">                           
+                                <a class="nav-link">
+                                    <button>Print</button>
+                                </a>
+                            </div>
+
+                            <div class="col-md-6">
+                                <a href="/view_users" class="nav-link" onclick="event.preventDefault(); document.location.href='/view_users';">
+                                    <button >Go back</button>
+                                </a>
+                            </div>
+
+                        </div>
+                        
+
+                
+                    </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+            
+     </body>
+        
+        
+</html>
+
+      

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    
+    <style>
+
+          body {  
+            background: #741b47;  
+            color: #495057;  
+            font-family: "Roboto", Arial, Helvetica, sans-serif;  
+            font-size: 16px;  
+            font-weight: 300;  
+            letter-spacing: 0.01em;  
+            line-height: 1.6em;  
+            margin: 0;  
+            padding: 45px;   
+          }
+
+          h2 {  
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;  
+            color: #495057;   
+          }
+          
+          .form-wrapper {  
+            background: #fff;
+		    border-radius: 5px;  
+            width: 1600px;
+            padding: 15px;			
+          }
+          
+          .btn {  
+            background: #a64d79;  
+            border: #a64d79;  
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+          }  
+
+          .btn:hover,  
+          .btn:focus,  
+          .btn:active,  
+          .btn-primary:not(:disabled):not(.disabled).active,  
+          .btn-primary:not(:disabled):not(.disabled):active,  
+          .show > .btn-primary.dropdown-toggle {  
+            background: #a64d79;  
+            border: #a64d79;  
+            outline: 0;  
+          }  
+
+          
+          button.cancel-button {
+            background-color: #FFBABA;   
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+            display: inline-block; 
+            width: 120px;
+            height: 30px;
+            padding: 0.35em 1.2em;  
+            border: 1px solid  #D8000C;
+            margin: 0 0.3em 0.3em 0;  
+            border-radius: 0.2em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #D8000C;
+            text-align: center;  
+            transition: all 0.2s;  
+            }
+        button.approve-button {
+                background-color: #DFF2BF;   
+                padding: 0.6rem 3rem;  
+                font-weight: bold;  
+                display: inline-block; 
+                width: 120px;
+                height: 30px;
+                padding: 0.35em 1.2em;  
+                border: 1px solid  #4F8A10;
+                margin: 0 0.3em 0.3em 0;  
+                border-radius: 0.2em;  
+                box-sizing: border-box;  
+                text-decoration: none;  
+                font-family: 'Roboto',sans-serif;  
+                font-weight: 700;  
+                color: #4F8A10;
+                text-align: center;  
+                transition: all 0.2s;  
+                }
+
+                button.approve-button:hover,
+                button.approve-button:focus,
+                button.approve-button:active,
+                button.approve-button.btn-primary:not(:disabled):not(.disabled).active,
+                button.approve-button.btn-primary:not(:disabled):not(.disabled):active,
+                .show > button.approve-button.btn-primary.dropdown-toggle {
+                    background-color: #DFF2BF;
+                    border: 1px solid  #4F8A10; 
+                    color: #4F8A10;
+                    outline: 0;  
+                    }
+    
+
+                        
+            button.cancel-button:hover,
+            button.cancel-button:focus,
+            button.cancel-button:active,
+            button.cancel-button.btn-primary:not(:disabled):not(.disabled).active,
+            button.cancel-button.btn-primary:not(:disabled):not(.disabled):active,
+            .show > button.cancel-button.btn-primary.dropdown-toggle {
+                background-color: #FFBABA; 
+                border: 1px solid  #D8000C; 
+                color: #D8000C;
+                outline: 0;  
+                }
+
+                            
+          button {  
+            display: inline-block; 
+            width: 120px;
+            height: 45px;
+            padding: 0.35em 1.2em;  
+            border: 0.1em solid #a64d79;  
+            margin: 0 0.3em 0.3em 0;  
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #a64d79;  
+            text-align: center;  
+            transition: all 0.2s;  
+          }  
+          
+            button:hover {  
+              color: #FFFFFF;  
+              background-color: #a64d79;  
+            }  
+
+
+            ul.nav.nav-pills {
+              display: flex;
+              justify-content: flex-end;
+            }
+
+            ul.nav.nav-pills li.nav-item {
+              margin-left: auto;
+            }
+
+            td {
+                font-size: 22px;
+                padding: 15px;
+                 /* Adjust the width as needed */
+                text-align: center;
+                vertical-align: middle; /* Added vertical alignment */
+            }
+            td:nth-child(2){
+                width: 200px;
+            }
+            td:nth-child(4){
+                width: 300px;
+            }
+    
+            th {
+                font-size: 26px;
+                padding: 5px;
+                text-align: center;
+                vertical-align: middle; /* Added vertical alignment */
+            }
+
+            
+            .reservations {
+            margin-top: 20px;
+            padding: 10px;
+            padding-left: 0 px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0 auto; /* Center horizontally */
+            width: 1250px;
+             }
+    
+             .error, .success{
+				border: 1px solid;
+				margin: 10px 0px;
+				padding: 15px 10px 15px 50px;
+			}
+
+			.error {
+				color: #D8000C;
+				font-size: 25px;
+				background-color: #FFBABA;
+			}
+
+			.success {
+				color: #4F8A10;
+				font-size: 25px;
+				background-color: #DFF2BF;
+			}
+				
+
+        </style>
+        
+</head>
+<body>
+
+		{% with messages = get_flashed_messages(category_filter=['delete_error']) %}
+        {% if messages %}
+              <div class="error">{{ messages[0] }}</div>
+        {% endif %}
+        {% endwith %}
+
+        {% with messages = get_flashed_messages(category_filter=['delete_success']) %}
+        {% if messages %}
+                <div class="success">{{ messages[0] }}</div>
+        {% endif %}
+        {% endwith %}
+
+        {% with messages = get_flashed_messages(category_filter=['approve_error']) %}
+        {% if messages %}
+              <div class="error">{{ messages[0] }}</div>
+        {% endif %}
+        {% endwith %}
+
+        {% with messages = get_flashed_messages(category_filter=['approve_success']) %}
+        {% if messages %}
+                <div class="success">{{ messages[0] }}</div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="row">
+            <header class="header">
+            <nav class="mb-1">
+                <ul class="nav nav-pills ml-auto">
+                
+                <li class="nav-item">
+                    <a href="/homepage" class="nav-link"> 
+                    <button> Home </button> </a>
+                </li>
+
+                </ul>
+            </nav>
+            </header>
+        </div>
+     
+        <div class="form-wrapper">
+
+            <div class="col-md-12" align="center">
+                <h2><b>All Reviews</b></h2>
+            </div>
+
+
+            <div class="container" align="center">
+                <div class="reservations">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Review Id</th>
+                                <th>Title</th>
+                                <th>Rating</th>
+                                <th>Text</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in range(title|length) %}
+                            <tr>
+                                <td>{{review_id[i]}}</td>
+                                <td>{{ title[i] }}</td>
+                                <td>{{ likert_rating[i] }}/5</td>
+                                <td>{{ text[i] }}</td>
+                                <td>{{ status[i] }}</td>
+                                <td>
+                                    <div class="row">
+                                    <form method="post" action="/delete_review">
+                                        <input type="hidden" name="review_id" value="{{ review_id[i] }}">
+                                        <button type="submit" class="cancel-button btn">Delete</button>
+                                    </form>
+                                    {% if status [i] == "Not approved" %}
+                                    <form method="post" action="/approve_review">
+                                        <input type="hidden" name="user_username" value="{{ user_username[i] }}">
+                                        <input type="hidden" name="review_id" value="{{ review_id[i] }}">
+                                        <input type="hidden" name="title" value="{{ title[i] }}">
+                                        <button type="submit" class="approve-button btn">Approve</button>
+                                    </form>
+                                    {% endif %}
+                                </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+       
+
+</body>
+</html>

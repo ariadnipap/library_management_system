@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Query 3.1.2</title>
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    
+    <style>
+
+          body {  
+            background: #741b47;  
+            color: #495057;  
+            font-family: "Roboto", Arial, Helvetica, sans-serif;  
+            font-size: 16px;  
+            font-weight: 300;  
+            letter-spacing: 0.01em;  
+            line-height: 1.6em;  
+            margin: 0;  
+            padding: 45px;   
+          }
+
+          h2 {  
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;  
+            color: #495057;   
+          }
+          
+          .form-wrapper {  
+            background: #fff;
+		    border-radius: 5px;  
+            width: 1600px;
+            padding: 15px;			
+          }
+          
+          .btn {  
+            background: #a64d79;  
+            border: #a64d79;  
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+          }  
+
+          .btn:hover,  
+          .btn:focus,  
+          .btn:active,  
+          .btn-primary:not(:disabled):not(.disabled).active,  
+          .btn-primary:not(:disabled):not(.disabled):active,  
+          .show > .btn-primary.dropdown-toggle {  
+            background: #a64d79;  
+            border: #a64d79;  
+            outline: 0;  
+          }  
+
+          
+          button.search-button {
+            /* Remove unwanted styling */
+            background: rgb(210, 209, 209);   
+            padding: 0.6rem 3rem;  
+            font-weight: bold;  
+            display: inline-block; 
+            width: 120px;
+            height: 30px;
+            padding: 0.35em 1.2em;  
+            border: 0.1em solid black;  
+            margin: 0 0.3em 0.3em 0;  
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: black;  
+            text-align: center;  
+            transition: all 0.2s;  
+            }
+
+                        
+            button.search-button:hover,
+            button.search-button:focus,
+            button.search-button:active,
+            button.search-button.btn-primary:not(:disabled):not(.disabled).active,
+            button.search-button.btn-primary:not(:disabled):not(.disabled):active,
+            .show > button.search-button.btn-primary.dropdown-toggle {
+                background: rgb(210, 209, 209); 
+                border: 0.1em solid black; 
+                color: black; 
+                outline: 0;  
+                }
+
+                            
+          button {  
+            display: inline-block; 
+            width: 120px;
+            height: 45px;
+            padding: 0.35em 1.2em;  
+            border: 0.1em solid #a64d79;  
+            margin: 0 0.3em 0.3em 0;  
+            border-radius: 0.12em;  
+            box-sizing: border-box;  
+            text-decoration: none;  
+            font-family: 'Roboto',sans-serif;  
+            font-weight: 700;  
+            color: #a64d79;  
+            text-align: center;  
+            transition: all 0.2s;  
+          }  
+          
+            button:hover {  
+              color: #FFFFFF;  
+              background-color: #a64d79;  
+            }  
+
+
+            ul.nav.nav-pills {
+              display: flex;
+              justify-content: flex-end;
+            }
+
+            ul.nav.nav-pills li.nav-item {
+              margin-left: auto;
+            }
+
+            .search-bar {
+                text-align: center;
+                margin: 20px auto;
+                margin-left: 10px;
+            }
+
+            td {
+                font-size: 22px;
+                padding: 15px;
+                max-width: 400px; /* Adjust the width as needed */
+                text-align: center;
+                vertical-align: middle; /* Added vertical alignment */
+            }
+    
+            th {
+                font-size: 26px;
+                max-width: 250px;
+                padding: 5px;
+                text-align: center;
+                vertical-align: middle; /* Added vertical alignment */
+            }
+
+            
+            .names {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 800px; /* Added max-width */
+            margin: 0 auto; /* Center horizontally */
+             }
+    
+
+        </style>
+        
+</head>
+<body>
+
+        <div class="row">
+            <header class="header">
+            <nav class="mb-1">
+                <ul class="nav nav-pills ml-auto">
+                
+                <li class="nav-item">
+                    <a href="/homepage" class="nav-link"> 
+                    <button> Home </button> </a>
+                </li>
+
+                </ul>
+            </nav>
+            </header>
+        </div>
+     
+        <div class="form-wrapper">
+
+            <div class="col-md-12" align="center">
+                <h2><b>Search for a given book category, which authors belong to it and which teachers
+                    have borrowed books from that category in the last year </b></h2>
+            </div>
+
+            <div class="search-bar">
+                <form action="{{ url_for('query_3_1_2') }}" method="POST">
+                    <select name="category">
+                        <option value="">All Categories</option>
+                        {% for category in categories %}
+                            <option value="{{ category }}">{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="search-button btn">Search</button>
+                </form>
+            </div>
+
+            <div class="container" align="center">
+                <div class="names">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in range(username|length) %}
+                            <tr>
+                                <td>{{ username[i] }}</td>
+                                <td>{{ first_name[i] }}</td>
+                                <td>{{ last_name[i] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="container" align="center">
+                <div class="names">
+                    <table>
+                      <thead>
+                        <tr>
+                            <th>Author Names</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            {% for author in authors %}
+                            <tr>
+                                <td>{{ author[0] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+       
+
+</body>
+</html>

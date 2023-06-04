@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Information About a Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Font Awesome library for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background: #741b47;
+            color: #999999;
+            font-family: "Roboto", Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+            line-height: 1.6em;
+            margin: 0;
+            padding: 100px;
+        }
+
+        h3 {
+            font-weight: bold;
+            margin-bottom: 2.5rem;
+            color: #c90076;
+        }
+
+        .form-wrapper {
+            background: #fff;
+            border-radius: 5px;
+            padding: 50px;
+        }
+
+        .form-control,
+        .custom-select {
+            border-radius: 0px;
+            color: #495057;
+            background-color: #f1f1f1;
+            border-color: none;
+        }
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #ffffff;
+            border: 1px solid #b5b6b3;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn {
+            background: #a64d79;
+            border: #a64d79;
+            padding: 0.6rem 3rem;
+            font-weight: bold;
+        }
+
+        .btn:hover,
+        .btn:focus,
+        .btn:active,
+        .btn-primary:not(:disabled):not(.disabled).active,
+        .btn-primary:not(:disabled):not(.disabled):active,
+        .show > .btn-primary.dropdown-toggle {
+            background: #a64d79;
+            border: #a64d79;
+            outline: 0;
+        }
+
+        button {
+            display: inline-block;
+            padding: 0.35em 1.2em;
+            border: 0.1em solid #a64d79;
+            margin: 0 0.3em 0.3em 0;
+            border-radius: 0.12em;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: #a64d79;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            color: #FFFFFF;
+            background-color: #a64d79;
+        }
+
+        .success {
+            border: 1px solid;
+            margin: 10px 0px;
+            padding: 15px 10px 15px 50px;
+            color: #4F8A10;
+            font-size: 25px;
+            background-color: #DFF2BF;
+        }
+    </style>
+</head>
+
+<body>
+{% if success %}
+<div class="success">
+    {{ success }}
+</div>
+{% endif %}
+
+<section class="contact-form pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="form-wrapper">
+                    <div class="row">
+                        <div class="col-md-12" align="center">
+                            <h3><b>Update Information About a Book</b></h3>
+                        </div>
+                    </div>
+                    <form action="/update_book_information" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="" name="book_id" value="{{ book_id }}" readonly required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="ISBN" name="ISBN" value="{{ book_data[0] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Title" name="title" value="{{ book_data[1] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="Number of Pages" name="pages_number" value="{{ book_data[2] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Publisher" name="publisher" value="{{ book_data[3] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Summary" name="summary" value="{{ book_data[4] }}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Language" name="language" value="{{ book_data[5] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Authors" name="author_name" value="{{ book_data[6] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Categories" name="category" value="{{ book_data[7] }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Keywords" name="keyword" value="{{ book_data[8] }}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="file" class="form-control" placeholder="Cover" name="image" accept="image/*">
+                                </div>
+                            </div>
+                            <div class="mt-6" align="center">
+                                <button>Update</button>
+                            </div>
+
+
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        function Edit(title) {
+            // Redirect to the make_reservation route with the book ID as a parameter
+            window.location.href = "/book_details_library_operator?title=" + title;
+        }
+    </script>
+
+</body>
+</html>
